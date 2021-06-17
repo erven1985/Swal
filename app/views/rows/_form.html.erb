@@ -1,0 +1,27 @@
+
+<%= form_with(model: row, local: true) do |form| %>
+  <% if row.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(row.errors.count, "error") %> prohibited this row from being saved:</h2>
+      <ul>
+        <% row.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group py-3">
+    <%= form.label :event_date %>
+    <%= form.date_field :event_date, html5: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group py-3">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= button_tag "Submit", type: :submit, class: "btn btn-success" %>
+  </div>
+<% end %>
